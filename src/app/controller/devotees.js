@@ -26,7 +26,7 @@ module.exports = {
         let attendance = new Attendance({
           devotee_id: user[0]._id,
           user_id: payload.user_id,
-          date: payload.date,
+          attendance_date: payload.date,
         });
         const at = await attendance.save();
         const dev = await Devotees.findByIdAndUpdate(user[0]._id, userDetail, {
@@ -46,7 +46,7 @@ module.exports = {
           let attendance = new Attendance({
             devotee_id: dev._id,
             user_id: dev.user_id,
-            date: payload.date,
+            attendance_date: payload.date,
           });
           const at = await attendance.save();
           updatedUser = {
