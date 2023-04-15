@@ -33,6 +33,7 @@ module.exports = {
     try {
       const payload = req.body;
       let user = await User.find({ phone: payload.phone }).lean();
+      console.log(user);
       if (!user.length) {
         // let user = await User.findOne({ email: payload.email.toLowerCase()  }).lean();
         // if (!user) {
