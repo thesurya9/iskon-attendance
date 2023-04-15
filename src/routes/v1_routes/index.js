@@ -1,6 +1,7 @@
 "use strict";
 const router = require("express").Router();
 const user = require("../../app/controller/user");
+const devotees = require("../../app/controller/devotees");
 const isAuthenticated = require("./../../middlewares/isAuthenticated");
 
 // auth routes
@@ -13,5 +14,10 @@ router.post(
 );
 router.post("/getProfile", user.getProfile);
 router.post("/updateProfile", user.updateProfile);
+
+//devotees
+router.post("/get-devotees", devotees.getDevotees);
+router.post("/save-attendance", devotees.saveAttendance);
+router.post("/get-attendance", devotees.getAttendance);
 
 module.exports = router;
