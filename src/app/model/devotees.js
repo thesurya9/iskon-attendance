@@ -9,6 +9,10 @@ const devoteesSchema = new mongoose.Schema(
     name: {
       type: String,
     },
+
+    marital_status: {
+      type: String,
+    },
     address: {
       type: String,
     },

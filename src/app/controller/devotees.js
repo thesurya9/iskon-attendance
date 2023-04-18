@@ -20,6 +20,7 @@ module.exports = {
         name: payload.name,
         address: payload.address || "",
         occupation: payload.occupation || "",
+        marital_status: payload.marital_status,
         user_id: payload.user_id,
       };
       if (user.length) {
