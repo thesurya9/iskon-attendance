@@ -13,21 +13,23 @@ const Notification = mongoose.model("Notification");
 module.exports = {
   // login controller
   login: async (req, res) => {
-    let user = await User.find({ phone: req?.body?.phone }).lean();
-    if (user.length) {
+    passport.authenticate("local", async (err, user, info) => {
+      if (err) {
+        return response.error(res, err);
+      }
+      if (!user) {
+        return response.unAuthorize(res, info);
+      }
       let token = await new jwtService().createJwtToken({
-        id: user[0]._id,
-        phone: user[0].phone,
+        id: user._id,
+        phone: user.phone,
       });
-      //await Device.updateOne({ device_token: req.body.device_token }, { $set: { player_id: req.body.player_id, user: user._id } }, { upsert: true });
       return response.ok(res, {
         token,
-        phone: user[0].phone,
-        id: user[0]._id,
+        phone: user.phone,
+        id: user._id,
       });
-    } else {
-      return response.unAuthorize(res, { message: "User does not exists" });
-    }
+    })(req, res);
   },
   signUp: async (req, res) => {
     try {
