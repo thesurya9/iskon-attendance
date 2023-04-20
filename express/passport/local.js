@@ -9,10 +9,7 @@ module.exports = new localStratagy(
   async (username, password, callback) => {
     try {
       let user = await User.findOne({
-        $or: [
-          { phone: username.toLowerCase() },
-          { email: username.toLowerCase() },
-        ],
+        $or: [{ phone: username }, { email: username }],
       });
       if (user) {
         if (!user.isValidPassword(password)) {
