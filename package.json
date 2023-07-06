@@ -3,7 +3,6 @@
   "version": "1.0.2",
   "description": "starting from scratch",
   "main": "server.js",
-
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js",
@@ -34,7 +33,7 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "mocha": "^9.0.0",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.22",
     "supertest": "^6.1.3"
   }
 }
